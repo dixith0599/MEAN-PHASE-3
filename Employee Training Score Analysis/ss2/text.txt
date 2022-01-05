@@ -1,0 +1,43 @@
+Name:Sharath K T
+   
+Employee Training Score Analysis
+DESCRIPTION
+
+Project Objective:
+
+Write a program using a command prompt to perform the employee training data analysis for a leading training provider company.
+
+Background of the problem statement:
+
+Many prestigious organizations send their employees to this leading corporate training provider to learn different skills. The training provider company has decided to share an analysis report with its clients. This report will help their clients identify the employees who have completed the training and evaluation exam, understand their strengths and areas for improvement. This will be a unique selling feature. This company has a large amount of data to deal with and has hired you to solve this problem.
+
+employees.json (import this file in mongodb database)
+
+JSON file contains the following columns:
+
+ 
+
+Id: Id of the person who was trained
+
+Name: Name of the person who was trained
+
+Score: Score achieved by the person for the specific term
+
+
+Quries: 
+
+1. Find the number of employees who failed in term 1 (pass mark = 37)
+
+> db.emp.find({"term1":{$lt:37}}).count()
+
+2. Find the average score of employees for term 1
+
+> db.emp.aggregate([{$group:{'_id':'term1',average:{$avg:'$term1'}}}])
+
+3. Find employees who passed in all three terms
+
+> db.emp.find({"term1":{$gt:37},"term2":{$gt:37},"term3":{$gt:37}}).pretty().count()
+
+4. Find the average score of employees
+
+db.emp.aggregate([{$group:{'_id':'term1',average:{$avg:'$term1'}}},{$group:{'_id':'term2',average:{$avg:'$term2'}}},{$group:{'_id':'term3',average:{$avg:'$term3'}}}])
