@@ -1,0 +1,4 @@
+Chat log:
+1. Created one room to save the chat between two people
+2.Chats are stored in Mongodb
+3.Used:Node js,express js,socket.io,mongodb,bootstrap
